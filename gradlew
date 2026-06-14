@@ -22,7 +22,7 @@ APP_BASE_NAME=${0##*/}
 APP_HOME=$( cd "${APP_HOME:-./}" > /dev/null && pwd -P ) || exit
 
 # Gradle version
-GRADLE_VERSION="8.11.1"
+GRADLE_VERSION="9.3.1"
 GRADLE_DIST_URL="https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"
 GRADLE_HOME="$HOME/.gradle/wrapper/dists/gradle-${GRADLE_VERSION}"
 
