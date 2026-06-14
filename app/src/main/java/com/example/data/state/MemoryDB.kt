@@ -22,11 +22,11 @@ data class FactEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val subject: String,
     val predicate: String,
-    val objectValue: String,
-    val validFromChapter: Int,
-    val validUntilChapter: Int? = null,
-    val sourceChapter: Int,
-    val createdAt: Long = System.currentTimeMillis()
+    @ColumnInfo(name = "object_value") val objectValue: String,
+    @ColumnInfo(name = "valid_from_chapter") val validFromChapter: Int,
+    @ColumnInfo(name = "valid_until_chapter") val validUntilChapter: Int? = null,
+    @ColumnInfo(name = "source_chapter") val sourceChapter: Int,
+    @ColumnInfo(name = "created_at") val createdAt: Long = System.currentTimeMillis()
 )
 
 @Entity(tableName = "chapter_summaries")
@@ -35,27 +35,27 @@ data class ChapterSummaryEntity(
     val title: String,
     val characters: String = "",
     val events: String = "",
-    val stateChanges: String = "",
-    val hookActivity: String = "",
+    @ColumnInfo(name = "state_changes") val stateChanges: String = "",
+    @ColumnInfo(name = "hook_activity") val hookActivity: String = "",
     val mood: String = "",
-    val chapterType: String = ""
+    @ColumnInfo(name = "chapter_type") val chapterType: String = ""
 )
 
 @Entity(tableName = "memory_hooks")
 data class MemoryHookEntity(
-    @PrimaryKey val hookId: String,
-    val startChapter: Int = 0,
+    @PrimaryKey @ColumnInfo(name = "hook_id") val hookId: String,
+    @ColumnInfo(name = "start_chapter") val startChapter: Int = 0,
     val type: String = "",
     val status: String = "open",
-    val lastAdvancedChapter: Int = 0,
-    val expectedPayoff: String = "",
-    val payoffTiming: String = "",
+    @ColumnInfo(name = "last_advanced_chapter") val lastAdvancedChapter: Int = 0,
+    @ColumnInfo(name = "expected_payoff") val expectedPayoff: String = "",
+    @ColumnInfo(name = "payoff_timing") val payoffTiming: String = "",
     val notes: String = "",
-    val dependsOn: String = "", // JSON array of hook IDs
-    val paysOffInArc: String = "",
-    val coreHook: Boolean = false,
-    val halfLifeChapters: Int? = null,
-    val advancedCount: Int = 0,
+    @ColumnInfo(name = "depends_on") val dependsOn: String = "", // JSON array of hook IDs
+    @ColumnInfo(name = "pays_off_in_arc") val paysOffInArc: String = "",
+    @ColumnInfo(name = "core_hook") val coreHook: Boolean = false,
+    @ColumnInfo(name = "half_life_chapters") val halfLifeChapters: Int? = null,
+    @ColumnInfo(name = "advanced_count") val advancedCount: Int = 0,
     val promoted: Boolean = false
 )
 

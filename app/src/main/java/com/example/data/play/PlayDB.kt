@@ -22,21 +22,21 @@ data class PlayEntityEntity(
     val label: String,
     val summary: String = "",
     val status: String = "",
-    val createdEventId: String? = null,
-    val updatedEventId: String? = null
+    @ColumnInfo(name = "created_event") val createdEventId: String? = null,
+    @ColumnInfo(name = "updated_event") val updatedEventId: String? = null
 )
 
 @Entity(tableName = "play_edges")
 data class PlayEdgeEntity(
     @PrimaryKey val id: String,
-    val fromId: String,
+    @ColumnInfo(name = "from_id") val fromId: String,
     val type: String,
-    val toId: String,
-    val valueJson: String = "{}",
-    val validFromEventId: String,
-    val validUntilEventId: String? = null,
-    val sourceEventId: String,
-    val visibilityJson: String = "{}",
+    @ColumnInfo(name = "to_id") val toId: String,
+    @ColumnInfo(name = "value_json") val valueJson: String = "{}",
+    @ColumnInfo(name = "valid_from_event") val validFromEventId: String,
+    @ColumnInfo(name = "valid_until_event") val validUntilEventId: String? = null,
+    @ColumnInfo(name = "source_event_id") val sourceEventId: String,
+    @ColumnInfo(name = "visibility_json") val visibilityJson: String = "{}",
     val strength: Double? = null,
     val confidence: Double? = null
 )
@@ -44,21 +44,21 @@ data class PlayEdgeEntity(
 @Entity(tableName = "play_state_slots")
 data class PlayStateSlotEntity(
     @PrimaryKey val id: String,
-    val ownerEntityId: String? = null,
+    @ColumnInfo(name = "owner_entity_id") val ownerEntityId: String? = null,
     val kind: String, // "attribute", "status", "inventory", etc.
     val label: String,
-    val valueJson: String,
-    val updatedEventId: String
+    @ColumnInfo(name = "value_json") val valueJson: String,
+    @ColumnInfo(name = "updated_event") val updatedEventId: String
 )
 
 @Entity(tableName = "play_events")
 data class PlayEventEntity(
     @PrimaryKey val id: String,
     val turn: Int,
-    val actionKind: String, // "narrate", "dialogue", "action", "system", etc.
-    val rawInput: String,
-    val outcomeSummary: String = "",
-    val createdAt: Long = System.currentTimeMillis()
+    @ColumnInfo(name = "action_kind") val actionKind: String, // "narrate", "dialogue", "action", "system", etc.
+    @ColumnInfo(name = "raw_input") val rawInput: String,
+    @ColumnInfo(name = "outcome_summary") val outcomeSummary: String = "",
+    @ColumnInfo(name = "created_at") val createdAt: Long = System.currentTimeMillis()
 )
 
 // Data classes for domain models
