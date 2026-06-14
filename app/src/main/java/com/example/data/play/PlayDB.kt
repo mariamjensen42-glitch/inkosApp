@@ -58,7 +58,7 @@ data class PlayEventEntity(
     @ColumnInfo(name = "action_kind") val actionKind: String, // "narrate", "dialogue", "action", "system", etc.
     @ColumnInfo(name = "raw_input") val rawInput: String,
     @ColumnInfo(name = "outcome_summary") val outcomeSummary: String = "",
-    @ColumnInfo(name = "created_at") val createdAt: Long = System.currentTimeMillis()
+    @ColumnInfo(name = "created_at") val createdAt: Long = 0
 )
 
 // Data classes for domain models

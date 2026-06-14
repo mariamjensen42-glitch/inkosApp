@@ -26,7 +26,7 @@ data class FactEntity(
     @ColumnInfo(name = "valid_from_chapter") val validFromChapter: Int,
     @ColumnInfo(name = "valid_until_chapter") val validUntilChapter: Int? = null,
     @ColumnInfo(name = "source_chapter") val sourceChapter: Int,
-    @ColumnInfo(name = "created_at") val createdAt: Long = System.currentTimeMillis()
+    @ColumnInfo(name = "created_at") val createdAt: Long = 0
 )
 
 @Entity(tableName = "chapter_summaries")
