@@ -111,7 +111,7 @@ jobs:
         name: debug-apk
         path: app/build/outputs/apk/debug/
         
-  # Job 4: Build Release APK
+  # Job 4: Build Release APK (使用硬编码的 keystore)
   build-release:
     name: Build Release
     runs-on: ubuntu-latest
@@ -132,17 +132,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
-    - name: Decode keystore
-      env:
-        KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
-      run: |
-        echo "$KEYSTORE_BASE64" | base64 -d > app/keystore.jks
-        
     - name: Assemble release APK
-      env:
-        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
       run: ./gradlew assembleRelease
       
     - name: Upload release APK

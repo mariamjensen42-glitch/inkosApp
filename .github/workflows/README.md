@@ -41,28 +41,23 @@
   - 安全漏洞检查
   - 生成质量报告
 
-## 环境变量和密钥
+## 签名配置
 
-### 必需的 Secrets
+本项目使用硬编码的 keystore 配置，无需配置 Secrets：
 
-在 GitHub 仓库的 Settings > Secrets and variables > Actions 中配置：
-
-| 名称 | 说明 |
-|------|------|
-| `KEYSTORE_BASE64` | Keystore 文件的 Base64 编码 |
-| `KEYSTORE_PASSWORD` | Keystore 密码 |
-| `KEY_ALIAS` | 签名密钥别名 |
-| `KEY_PASSWORD` | 签名密钥密码 |
-
-### 如何生成 Keystore
-
-```bash
-# 生成 keystore
-keytool -genkey -v -keystore app/keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias your_alias
-
-# 转换为 Base64
-base64 -i app/keystore.jks | tr -d '\n' > keystore_base64.txt
+```kotlin
+// app/build.gradle.kts
+signingConfigs {
+    create("release") {
+        storeFile = file("${rootDir}/app/release.keystore")
+        storePassword = "inkos123"
+        keyAlias = "inkos"
+        keyPassword = "inkos123"
+    }
+}
 ```
+
+**注意：** 生产环境建议使用 GitHub Secrets 或环境变量管理敏感信息。
 
 ## 本地运行测试
 
