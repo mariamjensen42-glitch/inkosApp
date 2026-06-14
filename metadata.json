@@ -1,0 +1,6 @@
+{
+  "name": "Story Creation AI Agent",
+  "description": "InkOS - 面向长短篇小说与互动开放世界的创作智能体系统",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
