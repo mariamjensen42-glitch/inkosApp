@@ -91,7 +91,7 @@ data class StoredHook(
     val expectedPayoff: String,
     val payoffTiming: String? = null,
     val notes: String,
-    val dependsOn: List<String> = emptyList(),
+    val dependsOn: String = "", // JSON array of hook IDs
     val paysOffInArc: String? = null,
     val coreHook: Boolean = false,
     val halfLifeChapters: Int? = null,
